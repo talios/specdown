@@ -6,7 +6,6 @@ public class TestSpec {
 
     @Test
     public void testSpec() throws IOException {
-        System.getProperties().setProperty("concordion.output.dir", "target/concordion");
         new SpecdownProcessor("src/test/resources").processAll();
     }
 

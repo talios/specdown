@@ -1,6 +1,6 @@
 import java.io.*;
 
-File file = new File( basedir, "target/concordion/specifications/Specifications.html" );
+File file = new File( "/tmp/specifications/Specifications.html" );
 if ( !file.exists() ) {
     throw new FileNotFoundException( "Could not find generated concordion file: " + file );
 }
