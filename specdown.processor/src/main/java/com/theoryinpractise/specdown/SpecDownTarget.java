@@ -6,8 +6,8 @@ import org.concordion.internal.FileTarget;
 import java.io.File;
 
 public class SpecDownTarget extends FileTarget {
-    public SpecDownTarget() {
-        super(new File("/tmp"));
+    public SpecDownTarget(File basedir) {
+        super(basedir);
     }
 
     @Override

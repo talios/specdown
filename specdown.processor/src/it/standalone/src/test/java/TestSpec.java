@@ -1,5 +1,6 @@
-import org.testng.annotations.Test;
 import com.theoryinpractise.specdown.SpecdownProcessor;
+import org.testng.annotations.Test;
+
 import java.io.IOException;
 
 public class TestSpec {

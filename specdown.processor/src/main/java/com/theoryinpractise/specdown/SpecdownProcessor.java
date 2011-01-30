@@ -41,7 +41,9 @@ public class SpecdownProcessor {
             StringBuilder sb = new StringBuilder();
             sb.append("### Failed Specifications\n\n");
 
-            SpecDownTarget specDownTarget = new SpecDownTarget();
+            String baseDir = System.getProperty("concordion.output.dir", "/tmp");
+
+            SpecDownTarget specDownTarget = new SpecDownTarget(new File(baseDir));
 
             for (Resource failedResource : failedResources) {
                 sb
@@ -57,7 +59,7 @@ public class SpecdownProcessor {
                     + new PegDownProcessor().markdownToHtml(sb.toString())
                     + "</body></html>";
 
-            Files.write(html, new File("/tmp/failedspecs.html"), Charsets.UTF_8);
+            Files.write(html, new File(baseDir, "failedspecs.html"), Charsets.UTF_8);
 
 
         }
@@ -118,7 +120,7 @@ public class SpecdownProcessor {
 
             ResultSummary resultSummary = new ConcordionBuilder()
                     .withSource(new SpecDownSource(srcDirectory))
-                    .withTarget(new SpecDownTarget())
+                    .withTarget(new SpecDownTarget(new File(System.getProperty("concordion.output.dir", "/tmp"))))
                     .build()
                     .process(resource, fixture);
 
