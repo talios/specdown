@@ -1,0 +1,17 @@
+### Welcome to specdown.
+
+Specdown is a simple testing abstraction that sits on top of markdown, and concordion for a simple, easy to use
+english written specification engine.
+
+The basic concept is that you just => write your specification documents <= in plain text, using the Markdown style markup
+tool, and include special "specification" statements when, and where you need them.
+
+  => When the system is in brown out, service agreements should not be creatable.  What do you people think "brown
+     out" means?
+  => Create new testing customer.
+  => Changing parameter output.
+  => Including assertion messages.
+
+In order to keep things small and localized, you should [link to other specifications](Otherspecs.html) and keep
+the flow moving.
+
