@@ -1,0 +1,36 @@
+### Concordion Tutorial
+
+This specdown example takes the original [Concordion Tutorial](http://www.concordion.org/Tutorial.html) and reworks
+it as a specdown based specification.
+
+Unlike concordion, all "specs" in specdown cover the functionality provided by set/assertEquals:
+
+  => The greeting for user Bob will be: Hello Bob!
+
+If we wanted to be a little more traditional, we can take advantage of the fact that markdown will leave any
+HTML you write alone, so we can intermix traditional concordion where we need, or want.
+
+For example, we will now assume that we want <span concordion:set="#firstName">Rob</span>'s greeting:
+
+  => The greeting for user #firstName will be: Hello Bob!
+
+Going further into the concordion tutorial, we have splitting of names, the original example shows returning
+a value from the fixture, then making assertions against the returned object.  This is quite a powerful feature
+of concordion but I can't help but feel that pulling state into the specification leads to bleeding logic and
+scripting into the specification.
+
+My personal preference would be two varations:
+
+  => The full name John Smith will be broken into first name John and last name Smith.
+  => The full name John Smith will be broken into first name Bob and last name Smith.
+
+For instances where you're wishing to assert functionality, but don't particularly care about test data, it's often
+useful to have the test data used by the fixture represented in your specification output for reference:
+
+  => A full name with 2 parts will be broken 2 parts.
+
+Notice here how the fixture method returns a String object, and that string is rendered inline.
+
+...more to come.
+
+
