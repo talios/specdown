@@ -130,9 +130,9 @@ public class SpecCommand extends AbstractCommand {
                 int start = matcher.start(i);
                 int end = matcher.end(i);
 
-                element.appendChild(newElement("span", "", fact.substring(index, start)));
+                element.appendChild(newElement("span", "success", fact.substring(index, start)));
 
-                element.appendChild(newElement("b", "", matcher.group(i)));
+                element.appendChild(newElement("b", "success", matcher.group(i)));
 
                 index = end;
 
@@ -140,10 +140,9 @@ public class SpecCommand extends AbstractCommand {
         }
 
         if (index < fact.length()) {
-            element.appendChild(newElement("span", "", fact.substring(index)));
+            element.appendChild(newElement("span", "success", fact.substring(index)));
         }
 
-        element.addStyleClass("success");
     }
 
     private void handleFailure(Element element, Map<Integer, SpecException.FactModifier> groupChanges, String fact, String src) {
