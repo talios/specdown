@@ -20,11 +20,10 @@ public class SpecCommand extends AbstractCommand {
         Element element = commandCall.getElement();
         String text = element.getText();
 
-        Matcher argMatcher = Pattern.compile("#.*\\w").matcher(text);
+        Matcher argMatcher = Pattern.compile("#\\w*").matcher(text);
         Map<String, String> args = new HashMap<String, String>();
         while (argMatcher.find()) {
-            String arg = text.substring(argMatcher.start(), argMatcher.end());
-            args.put(arg, String.valueOf(evaluator.getVariable(arg)));
+            args.put(argMatcher.group(), String.valueOf(evaluator.getVariable(argMatcher.group())));
         }
 
         for (Map.Entry<String, String> entry : args.entrySet()) {
@@ -91,7 +90,11 @@ public class SpecCommand extends AbstractCommand {
             throw new RuntimeException("No @Spec() method matching: " + text);
 
         } catch (Throwable e) {
-            handleFailure(element, e.getMessage(), e.getCause().toString());
+            if (e.getCause() != null) {
+                handleFailure(element, e.getCause().getMessage(), e.getCause().toString());
+            } else {
+                handleFailure(element, e.getMessage(), e.toString());
+            }
             throw new RuntimeException(e);
         }
     }
