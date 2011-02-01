@@ -5,7 +5,6 @@ import com.google.common.io.ByteStreams;
 import com.google.common.io.Resources;
 import org.concordion.api.Resource;
 import org.concordion.api.Source;
-import org.pegdown.Extensions;
 import org.pegdown.PegDownProcessor;
 
 import java.io.File;
@@ -44,7 +43,7 @@ public class SpecDownSource implements Source {
                 .replaceAll("\\s=> (.*) <=", " <span spec:spec=\"\">$1</span>")
                 .replaceAll("\\s=> (.*[\\.!?])", " * <span spec:spec=\"\">$1</span>");
 
-        return new PegDownProcessor(Extensions.ALL).markdownToHtml(markdown);
+        return new PegDownProcessor().markdownToHtml(markdown);
     }
 
     public boolean canFind(Resource resource) {
