@@ -12,19 +12,19 @@ public class Specifications {
         System.out.println("Writing specs");
     }
 
-    @Spec("When the system is in brown out, service agreements should not be creatable")
+    @Spec("When the system is in brown out, service agreements should not be creatable.")
     public void testSystem() {
         System.out.println("testing the system");
     }
 
 
-    @Spec("Create new (.*) customer")
+    @Spec("Create new (.*) customer.")
     public String createCustomer(String customer) {
         System.out.println("Creating a new customer named: " + customer);
         return "Hello " + customer;
     }
 
-    @Spec("Changing (.*) output")
+    @Spec("Changing (.*) output.")
     public void changingOutput(String s) {
 
 
@@ -35,7 +35,7 @@ public class Specifications {
 
     }
 
-    @Spec("Including assertion messages")
+    @Spec("Including assertion messages.")
     public void assertions() {
         assertThat(true).isFalse();
     }
