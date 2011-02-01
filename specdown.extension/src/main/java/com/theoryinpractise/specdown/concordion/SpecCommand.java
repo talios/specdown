@@ -87,15 +87,26 @@ public class SpecCommand extends AbstractCommand {
             }
 
             handleFailure(element, text, "No @Spec() method matching: " + text);
-            throw new RuntimeException("No @Spec() method matching: " + text);
+            throw new NoSuchMethodException("No @Spec() method matching: " + text);
 
         } catch (Throwable e) {
             if (e.getCause() != null) {
                 handleFailure(element, e.getCause().getMessage(), e.getCause().toString());
+
+                if (e.getCause() instanceof AssertionError) {
+                    throw (AssertionError) e.getCause();
+                } else {
+                    throw new RuntimeException(e.getCause());
+                }
+
             } else {
                 handleFailure(element, e.getMessage(), e.toString());
+                if (e instanceof AssertionError) {
+                    throw (AssertionError) e;
+                } else {
+                    throw new RuntimeException(e);
+                }
             }
-            throw new RuntimeException(e);
         }
     }
 
